@@ -5,7 +5,7 @@ import { Controller, Post } from '@nestjs/common';
 export class AppController {
   constructor(private readonly sendGrid: SendGridService) {}
 
-  @Post()
+  @Post('send_email')
   async root(): Promise<void> {
     await this.sendGrid.send({
       to: 'leochootest@gmail.com',
