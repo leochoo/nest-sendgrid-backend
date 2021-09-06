@@ -1,20 +1,22 @@
 import { SendGridService } from '@anchan828/nest-sendgrid';
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
+import { EmailDto } from './dto/email.dto';
 
 @Controller()
 export class AppController {
   constructor(private readonly sendGrid: SendGridService) {}
 
   @Post('send_email')
-  async root(): Promise<void> {
+  async root(@Body() emailDto: EmailDto): Promise<void> {
+    console.log('EmailDTO has', emailDto.emailAddress);
     await this.sendGrid.send({
-      to: 'leochootest@gmail.com',
+      to: emailDto.emailAddress,
       from: 'leochootest@gmail.com',
       templateId: 'd-43903e12c5a241959a1f60bb52564a59',
       dynamicTemplateData: {
         subject: 'Testing Templates',
-        name: 'Some One',
-        city: 'Denver',
+        name: 'John',
+        city: 'New York',
       },
     });
   }
