@@ -14,9 +14,9 @@ export class AppController {
       from: 'leochootest@gmail.com',
       templateId: 'd-43903e12c5a241959a1f60bb52564a59',
       dynamicTemplateData: {
-        subject: 'Testing Templates',
-        name: 'John',
-        city: 'New York',
+        name: emailDto.name,
+        subject: emailDto.subject,
+        message: emailDto.message,
       },
     });
   }
