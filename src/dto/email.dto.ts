@@ -5,6 +5,5 @@ export class EmailDto {
   emailAddress: string;
   @IsString()
   name: string;
-  @IsString()
   templateId: string;
 }

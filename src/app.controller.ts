@@ -9,6 +9,8 @@ export class AppController {
   @Post('send_email')
   async root(@Body() emailDto: EmailDto): Promise<void> {
     console.log('EmailDTO has', emailDto.emailAddress);
+    console.log('TemplateId has', emailDto.templateId);
+
     await this.sendGrid.send({
       to: emailDto.emailAddress,
       from: 'leochootest@gmail.com',
