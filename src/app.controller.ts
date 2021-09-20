@@ -12,11 +12,9 @@ export class AppController {
     await this.sendGrid.send({
       to: emailDto.emailAddress,
       from: 'leochootest@gmail.com',
-      templateId: 'd-43903e12c5a241959a1f60bb52564a59',
+      templateId: emailDto.templateId,
       dynamicTemplateData: {
         name: emailDto.name,
-        subject: emailDto.subject,
-        message: emailDto.message,
       },
     });
   }
