@@ -2,8 +2,9 @@ import { IsEmail, IsString } from 'class-validator';
 
 export class EmailDto {
   @IsEmail()
-  emailAddress: string;
+  fromEmail: string;
+  applicantEmail: string;
   @IsString()
-  name: string;
+  applicantName: string;
   templateId: string;
 }
