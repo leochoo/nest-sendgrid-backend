@@ -1,10 +1,17 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsString, ValidateNested } from 'class-validator';
+
+class ApplicantDto {
+  @IsString()
+  applicantName: string;
+  @IsEmail()
+  applicantEmail: string;
+}
 
 export class EmailDto {
   @IsEmail()
   fromEmail: string;
-  applicantEmail: string;
   @IsString()
-  applicantName: string;
   templateId: string;
+  @ValidateNested()
+  applicantArray: ApplicantDto[];
 }
